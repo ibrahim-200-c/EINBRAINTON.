@@ -1,86 +1,123 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
   <title>EINBRAINTON</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Font Awesome Link for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style type="text/css">
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+  * {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  }
+  body {
+  font-family: "Montserrat", sans-serif;
+  }
+  nav {
+  background: #2e6f40;
+  height: 220px;
+  width: 100%;
+  border-radius: 15px;
+  
+  }
+  label.logo {
+  color: white;
+  font-size: 50px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
+  }
+  nav ul {
+  float: right;
+  margin-right: 20px;
+  }
+  nav ul li {
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+  }
+  nav ul li a {
+  color: white;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  }
+  
 
-  <style>
-    /* ========== RESET ========== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Poppins", "Montserrat", sans-serif;
-      background: linear-gradient(120deg, #f0f8ff, #d7ecff, #f0f8ff);
-      background-size: 400% 400%;
-      animation: bgmove 12s ease-in-out infinite;
-      color: #000;
-      text-align: center;
-      padding: 20px;
-    }
-
-    @keyframes bgmove {
-      0% {
-        background-position: 0 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0 50%;
-      }
-    }
-
-    /* ========== NAVBAR ========== */
-    nav.navbar {
-      background: #2e6f40;
-      border-radius: 15px;
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      height: 135px;
-    }
-
-    .logo {
-      font-size: 40px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: 1px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    nav ul li a {
-      background: #fff;
-      padding: 8px 16px;
-      border-radius: 20px;
-      color: #000;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    nav ul li a:hover {
-      background: #000;
-      color: #fff;
-    }
-
-    /* ========== SEARCH BOX ========== */
-    .searchbox {
+  a.active,
+  a:hover {
+  
+  transition: .3s;
+  }
+  .checkbtn {
+  font-size: 22px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 30px;
+  cursor: pointer;
+  display: none;
+  }
+  #check {
+  display: none;
+  }
+  @media (max-width: 1050px) {
+  label.logo {
+  padding: 0;
+  }
+  nav ul li a {
+  font-size: 16px;
+  }
+  }
+  /* Responsive media query code for small screen */
+  @media (max-width: 890px) {
+  .checkbtn {
+  display: block;
+  }
+  label.logo {
+  font-size: 22px;
+  }
+  ul {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #2c3e50;
+  top: 80px;
+  left: -100%;
+  text-align: center;
+  transition: all .5s;
+  }
+  nav ul li {
+  display: block;
+  margin: 50px 0;
+  line-height: 30px;
+  }
+  nav ul li a {
+  font-size: 20px;
+  }
+  a:hover,
+  a.active {
+  background: none;
+  color: #0d661c;
+  }
+  #check:checked~ul {
+  left: 0;
+  }
+  }
+  section {
+  background: url("bg.jpg") no-repeat;
+  background-size: cover;
+  height: calc(100vh - 80px);
+  }
+  .searchbox {
       margin: 60px auto;
       max-width: 700px;
     }
@@ -99,165 +136,208 @@
       border-color: #2e6f40;
       box-shadow: 0 0 8px #2e6f40;
     }
-
-    /* ========== GRID CONTAINER ========== */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      margin-top: 50px;
-    }
-
-    .card {
-      background-color: #b8255f;
-      border-radius: 25px;
-      padding: 2em;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      font-size: 22px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      background-color: #9b1f50;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    /* ========== FOOTER ========== */
-    footer {
-      margin-top: 80px;
-      padding: 20px;
-      background: none;
-      border-radius: 15px;
-      color: white;
-    }
-
-    footer h2 {
-      margin-bottom: 15px;
-    }
-
-    .social-icons img {
-      width: 70px;
-      height: 70px;
-      margin: 10px;
-      border-radius: 50%;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .social-icons img:hover {
-      transform: scale(1.2);
-      box-shadow: 0 0 10px #fff;
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 768px) {
-      .logo {
-        font-size: 30px;
-      }
-
-      nav ul {
-        justify-content: center;
-      }
-
-      .card {
-        font-size: 20px;
-      }
-
-      .searchbox input {
-        font-size: 18px;
-      }
-    }
   </style>
 </head>
-
 <body>
-  <!-- ========== NAVBAR ========== -->
-  <nav class="navbar">
-    <div class="logo">EINBRAINTON</div>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="tel:01792108310">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- ========== SEARCH BOX ========== -->
-  <form class="searchbox" action="https://www.google.com/search" method="get">
-    <input type="text" name="q" placeholder="Search on Google..." />
-  </form>
-
-  <!-- ========== GRID SECTIONS ========== -->
-  <section>
+  <nav style="border-radius:15px;" width="100%">
+    <!-- Checkbox for toggling menu -->
+    <input type="checkbox" id="check">
+    <!-- Menu icon -->
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label><br><br><br><br>
+    <!-- Site logo -->
+    <label class="logo" style="font-size:55px; text-align:center;">EINBRAINTON</label>
     
-    <div class="grid-container">
-      <a href="#" class="card">
-        <h2>EBT<br>GK</h2>
-      </a>
-      <a href="https://ibrahim-200-c.github.io/All-Educational-Platforms-and-Their-websites/" class="card">
-        <h2>EDU<br>WEBSITES</h2>
-      </a>
-      <a href="https://ibrahim-200-c.github.io/Books-and-Syllabus/" class="card">
-        <h2>BOOKS<br>(3–12)</h2>
-      </a>
-      <a href="https://app.eboardresults.com/v2/home" class="card">
-        <h2>RESULT<br>(SSC/HSC)</h2>
-      </a>
-      <a href="https://result.dghs.gov.bd/mbbs/" class="card">
-        <h2>MEDICAL<br>RESULT</h2>
-      </a>
-      <a href="https://xiclassadmission.gov.bd/" class="card">
-        <h2>COLLEGE<br>ADMISSION</h2>
-      </a>
-      <a href="https://railapp.railway.gov.bd/splash/select-language" class="card">
-        <h2>TRAIN<br>TICKET</h2>
-      </a>
-      <a href="https://bdtickets.com/" class="card">
-        <h2>BUS<br>TICKET</h2>
-      </a>
-      <a href="https://ibrahim-200-c.github.io/E-Services/" class="card">
-        <h2>E<br>SERVICES</h2>
-      </a>
-      <a href="https://ibrahim-200-c.github.io/movie/" class="card">
-        <h2>EBT<br>MOVIES</h2>
-      </a>
-      <a href="https://ibrahim-200-c.github.io/E-commerce-websites/" class="card">
-        <h2>ONLINE<br>SHOPPING</h2>
-      </a>
-      <a href="https://ibrahim-200-c.github.io/Registration-/" class="card">
-        <h2>YOUR<br>OPINION</h2>
-      </a>
-    </div>
-  </section>
-
-  <!-- ========== FOOTER ========== -->
-  <footer>
-    <h2><font color="black">Stay With Us On :</font></h2>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/md.ibrahim.khalil.955268?mibextid=ZbWKwL">
-        <img src="https://static.vecteezy.com/system/resources/previews/042/127/218/non_2x/round-circle-blue-facebook-logo-with-long-shadow-on-a-transparent-background-free-png.png"
-          alt="Facebook" />
-      </a>
-      <a href="https://www.instagram.com/ibrahimkhl2006/?__pwa=1">
-        <img src="https://static.vecteezy.com/system/resources/previews/018/930/415/non_2x/instagram-logo-instagram-icon-transparent-free-png.png"
-          alt="Instagram" />
-      </a>
-      <a href="#">
-        <img src="https://cdn.freebiesupply.com/logos/large/2x/twitter-3-logo-png-transparent.png" alt="Twitter" />
-      </a>
-      <a href="#">
-        <img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/hd-youtube-logo-png-transparent-background-20.png"
-          alt="YouTube" />
-      </a>
-    </div>
+   
+    <!-- Navigation links -->
+    <ul>
+      <li><a class="active" href="#">Home</a></li>
+      
+      
+      <li><a href="tel: 01792108310">Contact</a></li>
+    </ul>
     <br>
+    <br>
+    <br>
+    
+    
+    
+    <br>
+    <br>
+    <br>
+    <br
+    
+    <center><form style="box-shadow: #2e6f40;" class="searchbox" action="https://www.google.com/search" method="get">
+    
+    
+    
+    
+    <input style="padding: 17px 16px; width: 100%; border-radius: 30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); outline: none; font: weight 300px;; font-size: 35px; background-color:white;" type="text" class="search" name="q" value="" placeholder="Google Search..."></h1>
+    
+    
+    </form></center>
+  </nav>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <!-- Section for image -->
+  <div >
+  <html lang="en">
+  <head>
+  <meta charshet="UTF-8">
+  <meta name="viewport" content="width=device">
+  <title>Einbrainton</title>
+  <style type"text/css">
+  *{
+  margin:0;
+  padding:0;
+  }
+  html{
+  
+  color: beige;
+  text-align: center;
+  }
+  body{
+  padding: min(30px, 99%);
+  background: #F0F8FF;
+  background-size: 400% 400%;
+  animation: color 12s ease-in-out infinite;
+  
+  }
+  @keyframes color{
+  0%{
+  background-position: 0 50%;
+  }
+  50%{
+  background-position: 100% 50%;
+  }
+  100%{
+  background-position: 0 50%;
+  }
+  }
+  h1{
+  margin: 30px 0;
+  color: rgb(0, 0, 0);
+  }
+  .card{
+  padding: 2em;
+  border: 0px solid rgb(75,82,92);
+  border-radius: 40px;
+  background-color: #B8255F;
+  text-align: center;
+  font-size: 25px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  .card:hover{
+    transform: translate(-5px);
+    background-color: #9b1f50;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3)
+  }
+  .grid-container{
+  display: grid;
+  border: 0px solid red;
+  grid-template-columns:
+  repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  }
+  </style>
+  </head>
+  <body width="99%" height="99%">
+  
+  <br>
+  
+  
+  
+  
+  
+  <BR>
+  <BR>
+  <BR>
+  <BR>
+  <div class="grid-container">
+  
+  <a href=""><font color="white"><div class="card">
+  <h2>EBT<br>GK</h2></font>
+  
+  </div></a>
+  <a href="https://ibrahim-200-c.github.io/All-Educational-Platforms-and-Their-websites/"><div class="card">
+  <font color="white"><h2>EDU-<br> WEBSITES</h2></font>
+  
+  </div></a>
+  <a href="https://ibrahim-200-c.github.io/Books-and-Syllabus/"><div class="card">
+  <font color="white"> <h2>BOOKS<br>(3-12)</h2></font>
+  
+  </div></a>
+  <a href="https://app.eboardresults.com/v2/home"><div class="card">
+  <font color="white"><h2>RESULT<br> (SSC/HSC)</h2></font>
+  
+  </div></a>
+  <a href="https://result.dghs.gov.bd/mbbs/"><div class="card">
+  <font color="white"><h2>MEDICAL<br> RESULT</h2></font>
+  
+  </div></a>
+  <a href="https://xiclassadmission.gov.bd/"><div class="card">
+  <font color="white"><h2>COLLEGE<br> ADMISSION</h2></font>
+  
+  </div></a>
+  <a href="https://railapp.railway.gov.bd/splash/select-language"><div class="card">
+  <font color="white"> <h2>TRAIN <br>TICKET</h2></font>
+  
+  </div></a>
+  <a href="https://bdtickets.com/"><div class="card">
+  <font color="white"><h2>BUS<br> TICKET</h2></font>
+  
+  </div></a>
+  <a href="https://ibrahim-200-c.github.io/E-Services/"><div class="card">
+  <font color="white"> <h2>E-<br>SERVICES</h2></font>
+  </div></a>
+  <a href="https://ibrahim-200-c.github.io/movie/"><div class="card">
+  <font color="white"><h2>EBT :<br>MOVIES</h2></font>
+  
+  </div></a>
+  <a href=" https://ibrahim-200-c.github.io/E-commerce-websites/"><div class="card">
+  <font color="white"><h2>ONLINE <br>SHOPPING</h2></font>
+  
+  </div></a>
+  <a href="https://ibrahim-200-c.github.io/Registration-/"><div class="card">
+  <font color="white"> <h2>YOUR<br> OPINION</h2></font>
+  
+  </div></a>
+  </div>
+  
+  <BR>
+  <br>
+  <BR>
+  <BR>
+  <BR>
+  <BR>
+  <h2><font color="black">Stay With Us On : </font></h2>
+  <div style="border:0px solid beige; width:99%; height:99%;">
+  <center><a href="https://www.facebook.com/md.ibrahim.khalil.955268?mibextid=ZbWKwL"><img src="https://static.vecteezy.com/system/resources/previews/042/127/218/non_2x/round-circle-blue-facebook-logo-with-long-shadow-on-a-transparent-background-free-png.png" width="90px" height="90px"></a>     <a href="https://www.instagram.com/ibrahimkhl2006/?__pwa=1"><img src="https://static.vecteezy.com/system/resources/previews/018/930/415/non_2x/instagram-logo-instagram-icon-transparent-free-png.png" width="90px" height="90px"></a>     
+  <a href=""><img src="https://cdn.freebiesupply.com/logos/large/2x/twitter-3-logo-png-transparent.png" width="80px" height="80px"></a>     <a href=""><img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/hd-youtube-logo-png-transparent-background-20.png" width="90px" height="90px"></a>
+  </center></div>
+  
+  </body>
+  </html>
+  </div>
+  <br>
+  <footer>
     <font color="black"> <p>© 2025 <a href="#">Einbrainton</a>. All Rights Reserved.</p></font>
   </footer>
 </body>
+    </html>
 
-</html>
+
+
 
 
 
